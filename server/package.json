@@ -8,6 +8,8 @@
     "dev": "nodemon app.js",
     "seedIdent": "npx sequelize db:seed --seed 20220320171717-idents.js",
     "undoSeedIdent": "npx sequelize db:seed:undo --seed 20220320171717-idents.js",
+    "seedRecords": "npx sequelize db:seed --seed 20220320171718-records.js",
+    "undoSeedRecords": "npx sequelize db:seed:undo --seed 20220320171718-records.js",
     "start": "npx sequelize db:migrate && node app.js"
   },
   "author": "",

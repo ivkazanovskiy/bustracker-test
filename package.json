@@ -8,6 +8,8 @@
     "heroku-postbuild": "cd client && npm i && npm run build",
     "seedIdent": "cd server && npm i && npm run seedIdent && npm start",
     "undoSeedIdent": "cd server && npm i && npm run undoSeedIdent && npm start",
+    "seedRecords": "cd server && npm i && npm run seedRecords && npm start",
+    "undoSeedRecords": "cd server && npm i && npm run undoSeedRecords && npm start",
     "start": "cd server && npm i && npm start"
   },
   "repository": {

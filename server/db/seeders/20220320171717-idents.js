@@ -1,23 +1,3 @@
-// const fs = require('fs').promises;
-// const path = require('path');
-
-// module.exports = {
-//   async up(queryInterface, Sequelize) {
-//     // const { identSeeds, recordsSeeds } = await csvData();
-
-//     const jsonData = await fs.readFile(path.join(__dirname, '../../src/json.txt'), 'utf8');
-//     const { identSeeds, recordsSeeds } = JSON.parse(jsonData);
-
-//     await queryInterface.bulkInsert('Idents', identSeeds, {});
-//     await queryInterface.bulkInsert('Records', recordsSeeds, {});
-//   },
-
-//   async down(queryInterface, Sequelize) {
-//     await queryInterface.bulkDelete('Records', null, {});
-//     await queryInterface.bulkDelete('Idents', null, {});
-//   },
-// };
-
 const fs = require('fs');
 const readline = require('readline');
 const path = require('path');
@@ -51,11 +31,9 @@ module.exports = {
     ));
 
     await queryInterface.bulkInsert('Idents', identSeeds, {});
-    // await queryInterface.bulkInsert('Records', recordsSeeds, {});
   },
 
   async down(queryInterface, Sequelize) {
-    // await queryInterface.bulkDelete('Records', null, {});
     await queryInterface.bulkDelete('Idents', null, {});
   },
 };
