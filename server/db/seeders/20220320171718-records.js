@@ -1,21 +1,26 @@
 const fs = require('fs');
-const readline = require('readline');
+const rl = require('readline');
 const path = require('path');
-const { Ident } = require('../models');
+const { Ident, Record } = require('../models');
 
-const lineReader = readline.createInterface({
-  input: fs.createReadStream(path.join(__dirname, '../../src/data.csv')),
+const readStream = fs.createReadStream(path.join(__dirname, '../../src/data.csv'));
+const lineReader = rl.createInterface({
+  input: readStream,
 });
 
 module.exports = {
   async up(queryInterface, Sequelize) {
     const allIdents = await Ident.findAll({ raw: true, attributes: ['id', 'ident'] });
 
-    const recordsSeeds = [];
-
-    lineReader.on('line', (line) => {
+    let counter = 0;
+    const maxCounter = 1000;
+    let recordsPack = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for await (const line of lineReader) {
       const [ident, lat, lon, speed, device_timestamp, server_timestamp, direction] = line.split(',');
       if (ident === 'ident') return;
+
+      counter += 1;
       const identId = allIdents.find((elem) => elem.ident === ident).id;
 
       const recordData = {
@@ -29,15 +34,19 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       };
-      recordsSeeds.push(recordData);
-    });
-    await new Promise((resolve, reject) => {
-      lineReader.on('close', () => {
-        resolve();
-      });
-    });
 
-    await queryInterface.bulkInsert('Records', recordsSeeds, {});
+      recordsPack.push(recordData);
+
+      if (counter >= maxCounter) {
+        await queryInterface.bulkInsert('Records', recordsPack, {});
+        counter = 0;
+        recordsPack = [];
+      }
+    }
+
+    if (recordsPack.length > 0) {
+      await queryInterface.bulkInsert('Records', recordsPack, {});
+    }
   },
 
   async down(queryInterface, Sequelize) {
