@@ -1,5 +1,5 @@
 import React from 'react';
-import { YMaps, Map, Polyline } from "react-yandex-maps";
+import {YMaps, Map, Polyline} from 'react-yandex-maps'
 
 function MyMap({ routData }) {
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import MyMap from './MyMap';
 import MyMapJS from './MyMapJS';
 
 function RouteInfo({ routQuery }) {

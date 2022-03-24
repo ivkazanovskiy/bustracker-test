@@ -5,7 +5,6 @@ import NavBar from './components/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkUser } from './redux/thunksCreators/chechUserAC';
-import { YMaps } from 'react-yandex-maps';
 
 function App() {
 

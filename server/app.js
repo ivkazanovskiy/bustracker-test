@@ -7,6 +7,9 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 
+const {
+  expressCspHeader, SELF, INLINE,
+} = require('express-csp-header');
 const corsConfig = require('./config/corsConfig');
 
 const loginRouter = require('./routes/loginRouter');
@@ -21,12 +24,19 @@ const app = express();
 
 const PORT = process.env.PORT ?? 4000;
 
-app.use(helmet());
+app.use(expressCspHeader({
+  directives: {
+    'script-src': [SELF, INLINE, 'https://api-maps.yandex.ru'],
+  },
+}));
+app.use(helmet({
+  contentSecurityPolicy: false,
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+}));
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(cors(corsConfig));
 app.use(cookieParser());
 
