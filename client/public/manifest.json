@@ -5,5 +5,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "content_security_policy": "script-src https://api-maps.yandex.ru; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://api-maps.yandex.ru https://api-maps.yandex.ru/2.1/?onload=__yandex-maps-api-onload__$$1futd19bl&onerror=__yandex-maps-api-onerror__$$1futd19bl&lang=ru_RU&load=&ns=&mode=release; script-src-elem 'self' https://api-maps.yandex.ru/2.1/?onload=__yandex-maps-api-onload__$$1futd19bl&onerror=__yandex-maps-api-onerror__$$1futd19bl&lang=ru_RU&load=&ns=&mode=release; object-src 'self';"
 }
