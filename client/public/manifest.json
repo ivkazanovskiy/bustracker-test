@@ -5,5 +5,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "content_security_policy": "script-src 'self' https://api-maps.yandex.ru; object-src 'self'"
+  "content_security_policy": "script-src https://api-maps.yandex.ru; object-src 'self'"
 }
