@@ -1,5 +1,4 @@
 import React, { useEffect, useLayoutEffect } from 'react';
-// import { ymaps } from 'https://api-maps.yandex.ru/2.1/?apikey=c8624c78-d5b2-4c52-96ea-8ff845b17790&lang=ru_RU'
 
 function MyMapJS({ routData }) {
 
@@ -24,7 +23,9 @@ function MyMapJS({ routData }) {
   // }
 
   useEffect(() => {
-    window.ymaps.ready(init)
+    if (window.ymaps) {
+      window.ymaps.ready(init)
+    }
   }, [])
 
   // window.ymaps.ready(init);
