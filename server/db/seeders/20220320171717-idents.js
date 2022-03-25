@@ -16,12 +16,6 @@ module.exports = {
       if (!uniqueIdents.includes(ident)) uniqueIdents.push(ident);
     });
 
-    await new Promise((resolve) => {
-      lineReader.on('close', () => {
-        resolve();
-      });
-    });
-
     const identSeeds = uniqueIdents.map((ident) => (
       {
         ident,
