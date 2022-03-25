@@ -26,9 +26,9 @@ function Login(props) {
     }
   }), {
     onSuccess: (response) => {
-
       const { token } = response.data
       localStorage.setItem('auth_token', token);
+      axios.defaults.headers.common['authorization'] = `Bearer ${token}`
       dispatch(authUser())
       return navigate('/')
     },

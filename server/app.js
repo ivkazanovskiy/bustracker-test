@@ -23,7 +23,7 @@ const PORT = process.env.PORT ?? 4000;
 
 app.use(expressCspHeader({
   directives: {
-    'script-src': [SELF, INLINE, 'https://api-maps.yandex.ru', 'https://yastatic.net'],
+    'script-src': [SELF, INLINE, '*'],
   },
 }));
 app.use(logger('dev'));

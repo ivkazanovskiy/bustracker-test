@@ -11,7 +11,7 @@ function App() {
   const { auth } = useSelector(state => state.userReducer)
   const dispatch = useDispatch()
 
-  if (auth === undefined) {
+  if (auth === undefined && localStorage.getItem('auth_token')) {
     dispatch(checkUser())
     return (<>Загрузка</>)
   }
