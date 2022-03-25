@@ -6,10 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd client && npm i && npm run build",
-    "seedIdent": "cd server && npm i && npm run seedIdent && npm start",
-    "undoSeedIdent": "cd server && npm i && npm run undoSeedIdent && npm start",
-    "seedRecords": "cd server && npm i && npm run seedRecords && npm start",
-    "undoSeedRecords": "cd server && npm i && npm run undoSeedRecords && npm start",
+    "db-dev": "cd server && npm i && npm run db", 
     "start": "cd server && npm i && npm start"
   },
   "repository": {

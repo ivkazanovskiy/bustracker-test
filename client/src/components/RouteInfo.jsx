@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import MyMap from './MyMap';
+import MyMap from './MyMapLib';
 import MyMapJS from './MyMapJS';
 
 function RouteInfo({ routQuery }) {
@@ -8,7 +8,7 @@ function RouteInfo({ routQuery }) {
   const { delay } = useSelector(state => state.userReducer)
 
   if (routQuery.isIdle) return (
-    <div className="p-4 mb-4 text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
+    <div className="p-4  text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
       Нажмите <span className="font-medium">"Загрузить"</span> для отоброжения информации по маршруту
     </div>
   )
@@ -23,13 +23,13 @@ function RouteInfo({ routQuery }) {
   )
 
   if (routQuery.isError) return (
-    <div className="p-4 mb-4 text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
+    <div className="p-4  text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
       Ошибка загрузки данных. Повторите попытку позже.
     </div>
   )
 
   if (routQuery.data.status === 204) return (
-    <div className="p-4 mb-4 text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
+    <div className="p-4  text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
       Информация о маршруте отсутствует. Выберите другую дату либо номер маршрута.
     </div>
   )
@@ -37,13 +37,13 @@ function RouteInfo({ routQuery }) {
   const routData = routQuery.data.data
 
   return (
-    <div className="flex flex-col gap-8 w-full h-full pb-20 self-center">
-      <div className="flex gap-8">
-        <div className="flex flex-col flex-1 gap-2 items-center p-4 mb-4 text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
+    <div className="flex flex-col gap-4 w-full h-full pb-12 md:gap-8 md:pb-20 self-center ">
+      <div className="flex gap-4 md:gap-8">
+        <div className="flex flex-col flex-1 gap-2 items-center p-4  text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
           <span className="font-medium">Максимальная скорость:</span>
           <span>{routData.maxSpeed} км/ч</span>
         </div>
-        <div className="flex flex-col flex-1 gap-2 items-center p-4 mb-4 text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
+        <div className="flex flex-col flex-1 gap-2 items-center p-4  text-sm text-center text-blue-700 bg-blue-100 rounded-lg">
           <span className="font-medium">Пройденный маршрут:</span>
           <span>{routData.distance / 1000} км</span>
         </div>

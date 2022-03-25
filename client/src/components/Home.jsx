@@ -1,11 +1,9 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useMutation, useQuery } from 'react-query'
+import { useDispatch } from 'react-redux';
+import { useMutation } from 'react-query'
 import axios from 'axios'
 
 import IdentsList from './IdentsList';
-import { toStringDate } from '../helpers/toStringDate'
-import MyMap from './MyMap';
 import { loadIdents } from '../redux/thunksCreators/identsAC';
 import RouteInfo from './RouteInfo';
 import { setDelay, stopDelay } from '../redux/actionCreators/userAC';
@@ -29,11 +27,11 @@ function Home(props) {
   })
 
   return (
-    <div className="flex flex-col gap-8 w-full max-w-3xl">
-      <div className="flex justify-between">
+    <div className="flex flex-col gap-4 w-full h-full p-4 max-w-3xl md:gap-8">
+      <div className="flex justify-between flex-col gap-2 md:flex-row md:gap-0">
         <IdentsList setIdent={setIdent} />
-        <input type="date" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-44 pl-10 p-2.5" ref={dateRef} defaultValue="2019-09-30" onChange={() => routQuery.reset()} />
-        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-44 px-5 py-2.5 text-center mr-2 mb-2" onClick={() => {
+        <input type="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-44 pl-10 p-2.5" ref={dateRef} defaultValue="2019-09-30" onChange={() => routQuery.reset()} />
+        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm md:w-44 px-5 py-2.5 text-center " onClick={() => {
           const data = {
             identId: identRef.current.id,
             date: dateRef.current.value
