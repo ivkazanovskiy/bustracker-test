@@ -38,7 +38,7 @@ function Login(props) {
         case 401:
           return window.alert("Неправильный пароль");
         case 403:
-          return window.alert("Email не анйден");
+          return window.alert("Email не найден");
         default:
           console.log(err);
           return window.alert("Ошибка!")
@@ -70,7 +70,7 @@ function Login(props) {
       </div>
       <button type="submit" onClick={(event) => {
         event.preventDefault();
-        loginQuery.mutate()
+        if (isCorrectEmail && isCorrectPassword) loginQuery.mutate()
       }} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Войти</button>
     </form>
   );
