@@ -15,12 +15,12 @@ https://bustrackertest.herokuapp.com/ - deploy
 npm run db-dev
 ```
 
-Запуск серверной части:
+Запуск серверной части в режиме разработки:
 ``` JS
-cd server && npm i && npm start
+cd server && npm i && npm run dev
 ```
 
-Запуск клиентской части:
+Запуск клиентской части в режиме разработки:
 ``` JS
 cd client && npm i && npm start
 ```
