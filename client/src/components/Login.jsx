@@ -33,14 +33,12 @@ function Login(props) {
       return navigate('/')
     },
     onError: (err) => {
-      console.log(err.response.status);
       switch (err.response.status) {
         case 401:
           return window.alert("Неправильный пароль");
         case 403:
           return window.alert("Email не найден");
         default:
-          console.log(err);
           return window.alert("Ошибка!")
       }
     }
